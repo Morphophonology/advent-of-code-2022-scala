@@ -1,0 +1,42 @@
+{
+	"name": "Scala",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			// Update the VARIANT arg to pick a Java version: 11, 17
+			// Append -bullseye or -buster to pin to an OS version.
+			// Use the -bullseye variants on local arm64/Apple Silicon.
+			"VARIANT": "17-bullseye",
+			// Options
+			"INSTALL_MAVEN": "false",
+			"INSTALL_GRADLE": "false",
+			"NODE_VERSION": "lts/*"
+		}
+	},
+
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Set *default* container specific settings.json values on container create.
+			"settings": { 
+			},
+			
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"vscjava.vscode-java-pack",
+        "scala-lang.scala",
+        "scalameta.metals"
+			]
+		}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y autoremove && sudo apt-get -y autoclean && (curl -fL https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux-static.gz | gzip -d > cs && chmod +x cs && ./cs setup) && . ~/.profile",
+
+	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode"
+}
