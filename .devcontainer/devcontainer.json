@@ -10,7 +10,7 @@
 			// Options
 			"INSTALL_MAVEN": "false",
 			"INSTALL_GRADLE": "false",
-			"NODE_VERSION": "lts/*"
+			"INSTALL_NODE": "false"
 		}
 	},
 
@@ -35,7 +35,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y autoremove && sudo apt-get -y autoclean && (curl -fL https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux-static.gz | gzip -d > cs && chmod +x cs && ./cs setup) && . ~/.profile",
+	"postCreateCommand": "sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y autoremove && sudo apt-get -y autoclean",
 
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode"
